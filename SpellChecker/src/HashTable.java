@@ -9,37 +9,44 @@ This class creates a hash table...
 ************************************************************************/
 public class HashTable {
 	
-	private String[] table;
+	private LinkedList[] table;
 	private int tableSize;
 	
 	HashTable(int tableSize){
 		this.tableSize = tableSize;
-		table = new String[tableSize];
+		this.table = new LinkedList[tableSize];
+		
+		for (int i = 0; i < this.tableSize; i++) {
+			this.table[i] = new LinkedList();
+		}
 		
 	}
 	
 	public void insert(String key) {
 		
-		int bucket = hashMultiplicative(key) % this.tableSize;
+		int bucket = hashMultiplicative(key);
+
+		this.table[bucket].prepend(key);
 		
-		if(this.table[bucket] == null) {
-			this.table[bucket] = key;
-		}
+	}
+	
+	public boolean search(String key) {
 		
+		int bucket = hashMultiplicative(key);
 		
+		return this.table[bucket].search(key);
 	}
 	
 	private int hashMultiplicative(String key){
 		
-		int stringHash     = 5381;
+		int stringHash     = 809;
 		int hashMultiplier = 33;
 		
 		for(int i = 0; i < key.length(); i++) {
 			stringHash += (stringHash * hashMultiplier) + (int)key.charAt(i);
-			System.out.println(i);
 		}
 		
-		return stringHash;
+		return Math.abs(stringHash % this.tableSize);
 	}
 	
 	

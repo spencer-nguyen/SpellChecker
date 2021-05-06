@@ -9,10 +9,16 @@ class HashTableTest {
 		
 		HashTable test = new HashTable(10);
 		
-		assertEquals(183058, test.hashMultiplicative("h"));
-
-
+		test.insert("hello");
+		test.insert("yellow");
+		test.insert("olleh");
 		
+		assertEquals(true, test.search("hello"));
+		assertEquals(true, test.search("yellow"));
+		assertEquals(true, test.search("olleh"));
+
+
+
 	}
 
 }
