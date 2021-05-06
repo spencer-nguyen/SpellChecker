@@ -39,7 +39,7 @@ public class HashTable {
 	
 	private int hashMultiplicative(String key){
 		
-		int stringHash     = 809;
+		int stringHash     = 5381;
 		int hashMultiplier = 33;
 		
 		for(int i = 0; i < key.length(); i++) {

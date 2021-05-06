@@ -1,23 +1,20 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileNotFoundException;
+
 import org.junit.jupiter.api.Test;
 
 class HashTableTest {
 
 	@Test
-	void test() {
+	void test() throws FileNotFoundException {
 		
-		HashTable test = new HashTable(10);
+		SpellChecker test = new SpellChecker("test");
 		
-		test.insert("hello");
-		test.insert("yellow");
-		test.insert("olleh");
+		assertEquals(true,test.dictionary.search("abaft"));
 		
-		assertEquals(true, test.search("hello"));
-		assertEquals(true, test.search("yellow"));
-		assertEquals(true, test.search("olleh"));
 
-
+		
 
 	}
 
