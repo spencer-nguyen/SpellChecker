@@ -23,9 +23,7 @@ public class HashTable {
 	}
 	
 	public void insert(String key) {
-		
 		int bucket = hashMultiplicative(key);
-
 		this.table[bucket].prepend(key);
 		
 	}

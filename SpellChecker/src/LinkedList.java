@@ -31,6 +31,10 @@ public class LinkedList {
 		public void setNext(Node nextValue) {
 			this.next = nextValue;
 		}
+		
+		public Node getNext() {
+			return this.next;
+		}
 	}
 	
 	public void prepend(String data) {
@@ -49,10 +53,10 @@ public class LinkedList {
 		Node curr = this.head;
 		
 		while(curr != null) {
-			if(curr.getData() == data) {
+			if(curr.getData().equals(data)) {
 				return true;
 			}
-			curr = curr.next;
+			curr = curr.getNext();
 		}
 		
 		return false;

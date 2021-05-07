@@ -13,13 +13,12 @@ This class creates a hash table...
 ************************************************************************/
 public class SpellChecker {
 	
-	private final int HASH_TABLE_SIZE = 40000;
+	private final int HASH_TABLE_SIZE = 100000;
 
 	private String dictionaryTxt = "dictionary.txt";
 	private String fileToCheck;
 	
-	
-	 HashTable dictionary;
+	HashTable dictionary;
 	
 	SpellChecker(String fileToCheck) throws FileNotFoundException{
 		
@@ -32,11 +31,12 @@ public class SpellChecker {
 	}
 	
 	private void buildDictionary() throws FileNotFoundException {
-		
+				
 		File file = new File(dictionaryTxt);
 		Scanner scnr = new Scanner(file);
 		
 		while(scnr.hasNextLine()) {
+			
 			this.dictionary.insert(scnr.nextLine().toLowerCase());
 		}
 		scnr.close();
