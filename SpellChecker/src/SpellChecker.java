@@ -1,8 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /*********************************************************************** 
   Student Name: Spencer Nguyen
   File Name: SpellChecker
@@ -12,6 +7,11 @@ import java.util.Scanner;
 This class creates a hash table...
 
 ************************************************************************/
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class SpellChecker {
 	
 	private final int HASH_TABLE_SIZE = 100000;
@@ -62,7 +62,7 @@ public class SpellChecker {
 
 		String word;
 		File file = new File(this.fileToCheck);
-		Scanner scnr = new Scanner(file);
+		Scanner scnr = new Scanner(file).useDelimiter("[ ,!?.]+");
 		
 		printOriginalText();
 		
@@ -91,22 +91,13 @@ public class SpellChecker {
 						else {
 							System.out.print(this.suggestedWords.get(i) + ", ");
 						}
-						
 					}
 				}
 				System.out.println();
 			}
-			
 		}
 		scnr.close();			
-			
-			
 	}
-		
-		
-		
-		
-	
 	
 	private boolean wordIsInDictionary(String word) {
 		word = word.toLowerCase();
@@ -178,10 +169,4 @@ public class SpellChecker {
 			}
 		}	
 	}
-	
-	
-	
-	
-	
-	
 }

@@ -16,9 +16,5 @@ public class main {
 		String fileToCheck = "testTextFile.txt";
 		
 		SpellChecker splchk = new SpellChecker(fileToCheck);
-		
-		
-		
 	}
-
 }
