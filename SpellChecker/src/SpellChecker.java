@@ -18,7 +18,7 @@ public class SpellChecker {
 	private String dictionaryTxt = "dictionary.txt";
 	private String fileToCheck;
 	
-	HashTable dictionary;
+	private HashTable dictionary;
 	
 	SpellChecker(String fileToCheck) throws FileNotFoundException{
 		
@@ -27,6 +27,8 @@ public class SpellChecker {
 		this.dictionary = new HashTable(HASH_TABLE_SIZE);
 		
 		buildDictionary();
+		
+		deleteLetterCheck("pool");
 		
 	}
 	
@@ -42,6 +44,61 @@ public class SpellChecker {
 		scnr.close();
 	}
 	
+	private boolean wordIsInDictionary(String word) {
+		word = word.toLowerCase();
+		return this.dictionary.search(word);
+	}
+	
+	private void addLetterCheck(String word) {
+		word = word.toLowerCase();
+		
+		String addLetterWord = "";
 
+		for(int i = 0; i < word.length() + 1; i++) {
+
+			for(int j = (int)'a'; j < (int)'z' + 1; j++) {
+					
+				if(i == 0) {
+					addLetterWord = (char)j + word.substring(i);
+				}
+					
+				else {
+					addLetterWord = word.substring(0, i) + (char)j + word.substring(i, word.length());
+				}
+				
+				
+
+			}
+		}	
+	}
+	
+	private void deleteLetterCheck(String word) {
+		
+		word = word.toLowerCase();
+		
+		String deleteLetterWord = "";
+		
+		for(int i = 0; i < word.length(); i++) {
+			
+			if(i == 0) {
+				deleteLetterWord = word.substring(i + 1);
+			}
+			else {
+				deleteLetterWord = word.substring(0, i) + word.substring(i + 1);
+			}
+			
+			System.out.println(deleteLetterWord);
+		}	
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 }

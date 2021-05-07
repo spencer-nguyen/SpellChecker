@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+
 /*********************************************************************** 
   Student Name: Spencer Nguyen
   File Name: SpellChecker
@@ -9,9 +11,14 @@ This class creates a hash table...
 ************************************************************************/
 public class main {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		String fileToCheck = "testTextFile.txt";
+		
+		SpellChecker splchk = new SpellChecker(fileToCheck);
+		
+		
+		
 	}
 
 }
