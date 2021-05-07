@@ -1,5 +1,3 @@
-import java.io.FileNotFoundException;
-
 /*********************************************************************** 
   Student Name: Spencer Nguyen
   File Name: SpellChecker
@@ -9,6 +7,8 @@ import java.io.FileNotFoundException;
 This class creates a hash table...
 
 ************************************************************************/
+import java.io.FileNotFoundException;
+
 public class main {
 
 	public static void main(String[] args) throws FileNotFoundException {

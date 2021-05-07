@@ -4,8 +4,7 @@
   Assignment Number: Project 4
   Course: COP5416
 
-This class creates a hash table...
-
+This class creates a LinkedList of type String.
 ************************************************************************/
 public class LinkedList {
 
@@ -37,6 +36,10 @@ public class LinkedList {
 		}
 	}
 	
+	/**
+	 * This method prepends data onto the the list.
+	 * @param data
+	 */
 	public void prepend(String data) {
 		if(this.head == null) {
 			this.head = new Node(data);
@@ -48,6 +51,11 @@ public class LinkedList {
 		}
 	}
 	
+	/**
+	 * This method searches the list for specified data and returns boolean.
+	 * @param data
+	 * @return
+	 */
 	public boolean search(String data) {
 		
 		Node curr = this.head;
