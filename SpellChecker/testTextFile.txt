@@ -1,1 +1,2 @@
-Hello. My plan is to hav a test fiile that has UPPer and LOWER case words. All three cases of misspellings will be represented. The file will encompass more than one line and will have no other puncktuation than commas, and the dot at hte end of a line.
+Teh QUICK broown fox sletp uder thE oldp shedd.
+he hda rde, brown, and blck furr.

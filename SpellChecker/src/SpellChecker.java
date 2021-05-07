@@ -68,8 +68,7 @@ public class SpellChecker {
 		
 		System.out.println("\n------------Suggested Corrections------------");
 
-		while(scnr.hasNext()) {
-			this.suggestedWords.clear();
+		while(scnr.hasNextLine()) {
 			
 			word = scnr.next();
 			
@@ -95,6 +94,7 @@ public class SpellChecker {
 				}
 				System.out.println();
 			}
+			this.suggestedWords.clear();
 		}
 		scnr.close();			
 	}
@@ -121,7 +121,7 @@ public class SpellChecker {
 					addLetterWord = word.substring(0, i) + (char)j + word.substring(i, word.length());
 				}
 				
-				if(this.dictionary.search(addLetterWord) && this.suggestedWords.contains(addLetterWord) == false) {
+				if(this.dictionary.search(addLetterWord) == true && this.suggestedWords.contains(addLetterWord) == false) {
 					this.suggestedWords.add(addLetterWord);
 				}
 			}
@@ -143,7 +143,7 @@ public class SpellChecker {
 				deleteLetterWord = word.substring(0, i) + word.substring(i + 1);
 			}
 			
-			if(this.dictionary.search(deleteLetterWord) && this.suggestedWords.contains(deleteLetterWord) == false) {
+			if(this.dictionary.search(deleteLetterWord) == true && this.suggestedWords.contains(deleteLetterWord) == false) {
 				this.suggestedWords.add(deleteLetterWord);
 			}
 		}	
@@ -164,7 +164,7 @@ public class SpellChecker {
 			
 			swapLetterWord = new String(wordCharArr);
 			
-			if(this.dictionary.search(swapLetterWord) && this.suggestedWords.contains(swapLetterWord) == false) {
+			if(this.dictionary.search(swapLetterWord) == true && this.suggestedWords.contains(swapLetterWord) == false) {
 				this.suggestedWords.add(swapLetterWord);
 			}
 		}	
