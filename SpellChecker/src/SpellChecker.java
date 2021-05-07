@@ -28,7 +28,7 @@ public class SpellChecker {
 		
 		buildDictionary();
 		
-		deleteLetterCheck("pool");
+		swapLetterCheck("apple");
 		
 	}
 	
@@ -65,9 +65,6 @@ public class SpellChecker {
 				else {
 					addLetterWord = word.substring(0, i) + (char)j + word.substring(i, word.length());
 				}
-				
-				
-
 			}
 		}	
 	}
@@ -87,14 +84,27 @@ public class SpellChecker {
 				deleteLetterWord = word.substring(0, i) + word.substring(i + 1);
 			}
 			
-			System.out.println(deleteLetterWord);
 		}	
-		
-		
-		
-		
 	}
 	
+	private void swapLetterCheck(String word) {
+		
+		word = word.toLowerCase();
+		char[] wordCharArr = word.toCharArray();
+		char temp;
+		String swapLetterWord;
+		
+		for(int i = 0; i < word.length() - 1; i++) {
+			
+			temp = wordCharArr[i];
+			wordCharArr[i] = wordCharArr[i + 1];
+			wordCharArr[i + 1] = temp;
+			
+			swapLetterWord = new String(wordCharArr);
+			
+			System.out.println(swapLetterWord);
+		}	
+	}
 	
 	
 	
