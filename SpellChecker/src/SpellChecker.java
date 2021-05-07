@@ -86,9 +86,9 @@ public class SpellChecker {
 		System.out.println("\n------------Suggested Corrections------------");
 
 		while(scnr.hasNext()) {
-			
 			word = scnr.next();
 						
+			/* If words is not in dictionary, check the following conditions. */
 			if(wordIsInDictionary(word) == false) {
 				addLetterCheck(word);
 				deleteLetterCheck(word);
@@ -100,6 +100,7 @@ public class SpellChecker {
 					System.out.println("no suggestions");
 				}
 				else {
+					/* Print suggested words in a list. */
 					for(int i = 0; i < this.suggestedWords.size(); i++) {
 						if(i == this.suggestedWords.size() - 1) {
 							System.out.print(this.suggestedWords.get(i));
@@ -111,25 +112,34 @@ public class SpellChecker {
 					System.out.println();
 				}
 			}
-			this.suggestedWords.clear();
+			this.suggestedWords.clear();// clear ArrayList for the next word suggestions
 		}
 		scnr.close();			
 	}
 	
+	/**
+	 * This method checks if the word is in the dictionary hash table.
+	 * @param word
+	 * @return
+	 */
 	private boolean wordIsInDictionary(String word) {
-		word = word.toLowerCase();
+		word = word.toLowerCase();// all words are checked as lower case to be case insensitive
 		return this.dictionary.search(word);
 	}
 	
+	/** 
+	 * This method checks a misspelled word by adding a letter a-z to each posiiton.
+	 * It will append suggested words to the ArrayList.
+	 * @param word
+	 */
 	private void addLetterCheck(String word) {
-		word = word.toLowerCase();
+		word = word.toLowerCase();// all words are checked as lower case to be case insensitive
 		
 		String addLetterWord = "";
 
 		for(int i = 0; i < word.length() + 1; i++) {
-
+			/* Add letters a - z. */
 			for(int j = (int)'a'; j < (int)'z' + 1; j++) {
-					
 				if(i == 0) {
 					addLetterWord = (char)j + word.substring(i);
 				}
@@ -137,7 +147,7 @@ public class SpellChecker {
 				else {
 					addLetterWord = word.substring(0, i) + (char)j + word.substring(i, word.length());
 				}
-				
+				/* If suggested word is in the dictionary and not already in the list, add to the list. */
 				if(this.dictionary.search(addLetterWord) == true && this.suggestedWords.contains(addLetterWord) == false) {
 					this.suggestedWords.add(addLetterWord);
 				}
@@ -145,42 +155,51 @@ public class SpellChecker {
 		}	
 	}
 	
+	/**
+	 * This method checks a misspelled word by deleting a letter at each position.
+	 * It will append suggested words to the ArrayList.
+	 * @param word
+	 */
 	private void deleteLetterCheck(String word) {
-		
 		word = word.toLowerCase();
 		
 		String deleteLetterWord = "";
 		
 		for(int i = 0; i < word.length(); i++) {
-			
 			if(i == 0) {
 				deleteLetterWord = word.substring(i + 1);
 			}
 			else {
 				deleteLetterWord = word.substring(0, i) + word.substring(i + 1);
 			}
-			
+			/* If suggested word is in the dictionary and not already in the list, add to the list. */
 			if(this.dictionary.search(deleteLetterWord) == true && this.suggestedWords.contains(deleteLetterWord) == false) {
 				this.suggestedWords.add(deleteLetterWord);
 			}
 		}	
 	}
 	
+	/**
+	 * This method checks a misspelled word by swapping each letter with its adjacent character.
+	 * @param word
+	 */
 	private void swapLetterCheck(String word) {
+		char temp;
+		char[] wordCharArr;
+		
+		String swapLetterWord = "";
 		
 		word = word.toLowerCase();
-		char[] wordCharArr;
-		char temp;
-		String swapLetterWord;
-		
+
 		for(int i = 0; i < word.length() - 1; i++) {
-			wordCharArr = word.toCharArray();
-			temp = wordCharArr[i];
-			wordCharArr[i] = wordCharArr[i + 1];
+			/* Utilize charArray to swap letter positions. */
+			wordCharArr        = word.toCharArray();
+			temp               = wordCharArr[i];
+			wordCharArr[i]     = wordCharArr[i + 1];
 			wordCharArr[i + 1] = temp;
 			
 			swapLetterWord = new String(wordCharArr);
-			
+			/* If suggested word is in the dictionary and not already in the list, add to the list. */
 			if(this.dictionary.search(swapLetterWord) == true && this.suggestedWords.contains(swapLetterWord) == false) {
 				this.suggestedWords.add(swapLetterWord);
 			}
